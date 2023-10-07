@@ -1,11 +1,16 @@
-body{
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
     background-color: #73c8a9;
     font-family: 'Press Start 2P', cursive;
     background-image: linear-gradient(to right, #73c8a9, #373b44);
 }
 
-canvas{
-    border: 5px solid #2e2e2e; 
+canvas {
+    border: 5px solid #2e2e2e;
     border-radius: 10px;
     display: block;
     margin: 50px auto;
@@ -36,14 +41,14 @@ canvas{
     z-index: 1000;
 }
 
-#score-display{
+#score-display {
     color: #fff;
     font-size: 2em;
     text-align: center;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-button{
+button {
     background-color: #2e2e2e;
     border: none;
     border-radius: 5px;
@@ -55,17 +60,29 @@ button{
     transition: all 0.25s ease;
 }
 
-button:hover{
+button:hover {
     background-color: #333;
     transform: translateY(-2px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.titleImg{
+.titleImg {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.titleImg img{
+
+.titleImg img {
     width: 100%;
+}
+
+@media (max-width: 480px) {
+    #game-canvas {
+        width: 90%; /* El canvas ocupará el 100% del ancho de la pantalla */
+        height: auto; /* La altura se ajustará automáticamente */
+    }
+
+    #score-display {
+        font-size: 18px; /* Tamaño de fuente más pequeño en pantallas pequeñas */
+    }
 }

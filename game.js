@@ -35,6 +35,12 @@ const collisionAudio = new Audio('img/vigoExplotando.mp3');
 //Audio fondo
 const backgroundAudio = new Audio('img/fondoSonido.mp3');
 
+canvas.addEventListener('touchstart', function (e) {
+    if (window.innerWidth <= 600) { // Cambia 600 al valor que desees para determinar cuándo habilitar el salto táctil
+        birdVelocity = FLPA_SPEED;
+        e.preventDefault(); // Evita el desplazamiento de la pantalla táctil en dispositivos móviles
+    }
+});
 
 document.body.onkeyup = function (e) {
     if (e.code == 'ArrowUp') {
@@ -181,5 +187,3 @@ function loop() {
 }
 
 loop();
-
-
