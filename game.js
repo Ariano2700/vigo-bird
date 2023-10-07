@@ -1,8 +1,6 @@
 const canvas = document.getElementById('game-canvas');
 const ctx = canvas.getContext("2d");
-
-const gameConteiner = document.getElementById('game-container');
-const flappyImg = new Image();
+const gameConteiner = document.getElementById('game-container');const flappyImg = new Image();
 flappyImg.src = 'img/vigobird.png';
 
 //Constantes del juego
@@ -26,14 +24,14 @@ let pipeY = canvas.height - 200;
 //score
 let scoreDiv = document.getElementById('score-display');
 let score = 0;
-let highScore =  0;
+let highScore = 0;
 
 let scored = false;
 
 //Audio de colision
 const collisionAudio = new Audio('img/vigoExplotando.mp3');
 //Audio fondo
-const backgroundAudio = new Audio('img/fondoSonido.mp3');
+//const backgroundAudio = new Audio('img/fondoSonido.mp3');
 
 canvas.addEventListener('touchstart', function (e) {
     if (window.innerWidth <= 600) { // Cambia 600 al valor que desees para determinar cuándo habilitar el salto táctil
@@ -47,11 +45,6 @@ document.body.onkeyup = function (e) {
         birdVelocity = FLPA_SPEED;
     }
 }
-/*document.addEventListener('click', function () {
-    // Aumentamos la velocidad del pájaro para simular el salto
-    birdVelocity = FLPA_SPEED;
-});*/
-
 
 document.getElementById('restart').addEventListener('click', function () {
     hideEndMenu();
@@ -59,25 +52,22 @@ document.getElementById('restart').addEventListener('click', function () {
     loop();
 });
 
-
-
 function increaseScore() {
-    if(birdX > pipeX + PIPE_WIDTH && 
-        (birdY < pipeY + PIPE_GAP || 
+    if (birdX > pipeX + PIPE_WIDTH &&
+        (birdY < pipeY + PIPE_GAP ||
             birdY + BIRD_HEIGHT > pipeY + PIPE_GAP) &&
-            !scored){
-                score++;
-                scoreDiv.innerHTML = score;
-                scored = true;
-            }
-        if (birdX < pipeX + PIPE_WIDTH){
-            scored = false;
-        }
+        !scored) {
+        score++;
+        scoreDiv.innerHTML = score;
+        scored = true;
+    }
+    if (birdX < pipeX + PIPE_WIDTH) {
+        scored = false;
+    }
 }
 
 function collisionCheck() {
     // Creacion de cajas para el bird y el pipes
-
     const birdBox = {
         x: birdX,
         y: birdY,
@@ -179,7 +169,7 @@ function loop() {
     birdVelocity += birdAcceleration;
     birdY += birdVelocity;
 
-    backgroundAudio.play();
+    //backgroundAudio.play();
 
     increaseScore();
     requestAnimationFrame(loop);
